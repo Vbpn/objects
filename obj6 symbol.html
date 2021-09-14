@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>symbol</title>
+</head>
+<body>
+  <script>
+    "use strict";
+    let globalSymbol = Symbol.for("name");
+    let localSymbol = Symbol("name");
+
+    console.log( Symbol.keyFor(globalSymbol) ); // name, global symbol
+    console.log( Symbol.keyFor(localSymbol) ); // undefined, not global
+
+    console.log( localSymbol.description ); // name
+
+    let lib = {
+    name: "ABC",
+    };
+
+    lib["id"] = 5;
+    lib["id"] = 6; // The value is changed because it is String [KEY]!!
+
+    lib[Symbol("id")] = 123;
+    lib[Symbol("id")] = 124; //Not changed
+
+    console.log(lib); // { name: "ABC", id: 6, Symbol(id): 123, Symbol(id): 124 }
+
+    //the same name for key and id in an object! o_O
+    let user = {
+    id: 1,
+    }
+
+    let id = Symbol('id');
+    user[id] = 2;
+
+    console.log(user); //{id: 1, Symbol('id'): 2}
+    console.log(user.id); //1
+    console.log(user['id']); //1
+    console.log(user[id]); //2
+
+
+  </script>
+
+</body>
+</html>

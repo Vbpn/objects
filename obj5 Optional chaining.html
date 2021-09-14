@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Optional chaining '.'</title>
+</head>
+<body>
+  <h1>?. instead of .</h1>
+  <script>
+  "use strict";
+  /*
+  let user = {}; // a user without "address" property
+  alert(user.address.street); // Error!
+  */
+  let userAdmin = {
+    admin() {
+      alert("I am admin");
+    }
+  };
+
+  let userGuest = {};
+
+  userAdmin.admin?.(); // I am admin
+
+  userGuest.admin?.(); // nothing (no such method)
+
+
+  let key = "firstName";
+
+  let user1 = {
+    firstName: "John"
+  };
+
+  let user2 = null;
+
+  alert( user1?.[key] ); // John
+  alert( user2?.[key] ); // undefined
+  </script>
+
+</body>
+</html>

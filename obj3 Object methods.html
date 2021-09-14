@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object methods, "this"</title>
+</head>
+<body>
+  <script>
+    "use strict";
+    let user = {
+      name: "John",
+      age: 30
+    };
+
+    user.sayHi = function() {
+      alert("Hello!");
+    };
+
+    // user.sayHi();
+    console.log(user);
+
+    //arr func test
+    let kek = (a, b) => a**b;
+    console.log(kek(3,2));
+
+    //the calculator!
+    let calculator = {
+      a: 0,
+      b: 0,
+      read(){
+        this.a = +prompt('gimme the first value', 0);
+        this.b = +prompt('gimme the second value', 0);
+      },
+      sum(){
+        return this.a + this.b;
+      },
+      mul(){
+        return this.a * this.b;
+      },
+    };
+
+  /* calculator.read();
+    console.log(calculator.sum());
+    console.log(calculator.mul());
+  */
+
+
+  // the ladder!
+  let ladder = {
+    step: 0,
+    up() {
+      this.step++;
+      return this; // returns the object itself
+    },
+    down() {
+      this.step--;
+      return this;
+    },
+    showStep: function() { // shows the current step
+      console.log('current step: '+this.step);
+      return this;
+    }
+  };
+
+  ladder.up().down().down().down().down().showStep();
+
+
+  </script>
+
+</body>
+</html>
